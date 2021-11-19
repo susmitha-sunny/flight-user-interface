@@ -1,0 +1,13 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.mat-toolbar {
+    background: teal;
+    color: white;
+    font-size: medium;
+    height: auto;
+    padding: 0.5%;
+}
