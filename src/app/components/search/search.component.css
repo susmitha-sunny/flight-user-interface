@@ -1,0 +1,23 @@
+.customField {
+    margin: 1%;
+}
+
+.formWrapper {
+    padding: 1%;
+}
+
+.searchWrapper {
+    margin:5%;
+    border: solid midnightblue;
+}
+
+button {
+    font-size: 20px;
+    left:    90%;
+    bottom:   0;
+    position: relative;
+}
+
+mat-label {
+    color: rgb(71, 70, 70) !important;
+}

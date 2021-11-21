@@ -2,12 +2,27 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+    border: solid black;
 }
 
 .mat-toolbar {
     background: teal;
     color: white;
     font-size: medium;
-    height: auto;
-    padding: 0.5%;
+    padding: 0;
+    margin: 0;
+}
+
+.footerWrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 100% !important;
+}
+
+span {
+    display:table;
+    margin-left: auto;
+    margin-right: auto;
 }
