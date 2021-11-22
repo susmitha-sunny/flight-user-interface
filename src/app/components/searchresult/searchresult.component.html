@@ -1,1 +1,68 @@
-<p>searchresult works!</p>
+<div style="margin: 2%;">
+  <h1 style="color: midnightblue;">Search Results</h1>
+</div>
+<div *ngIf="scheduleList.length != 0">
+    <mat-table #dataTable [dataSource]="dataSource">
+        <!-- COLUMN INFO -->
+
+        <ng-container color="primary" matColumnDef="airlineName">
+          <mat-header-cell *matHeaderCellDef>Airline</mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.flight.airline.airlineName}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="iataCode">
+          <mat-header-cell *matHeaderCellDef>IATA Code</mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.flight.airline.iataCode}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="flightNumber">
+          <mat-header-cell *matHeaderCellDef>Flight Number</mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.flight.flightNumber}} </mat-cell>
+        </ng-container>
+
+          <ng-container matColumnDef="departureAirport">
+            <mat-header-cell *matHeaderCellDef>Departure Airport</mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.departureAirport}} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="arrivalAirport">
+            <mat-header-cell *matHeaderCellDef>Arrival Airport</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.arrivalAirport}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="departureTime">
+            <mat-header-cell *matHeaderCellDef>Departure Time</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.departureTime}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="arrivalTime">
+            <mat-header-cell *matHeaderCellDef>Arrival Time</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.arrivalTime}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="duration">
+            <mat-header-cell *matHeaderCellDef>Duration</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.duration}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="fare">
+            <mat-header-cell *matHeaderCellDef>Fare</mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.fare}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let item"> <button (click)="pickItem(item)">Select</button> </mat-cell>
+          </ng-container>
+        
+        <!-- ROW Info-->
+          <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+          <mat-row *matRowDef="let rowData; columns: columnsToDisplay;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[2, 5, 10, 20]" showFirstLastButtons>
+  </mat-paginator>
+</div>
+
+<div *ngIf="scheduleList.length == 0">
+  No results found
+</div>

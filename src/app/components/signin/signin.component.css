@@ -1,0 +1,26 @@
+.customField {
+    margin: 1%;
+}
+
+.formWrapper {
+    padding: 1%;
+}
+
+.signinWrapper {
+    margin:5%;
+    border: solid midnightblue;
+}
+
+button {
+    font-size: 20px;
+    margin: 1%;
+}
+
+mat-label {
+    color: rgb(71, 70, 70) !important;
+}
+
+form {
+    text-align: center;
+}
+

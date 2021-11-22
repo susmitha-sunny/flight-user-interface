@@ -1,0 +1,28 @@
+mat-cell {
+    /* border: solid red; */
+}
+
+mat-header-cell {
+    /* border: solid green; */
+}
+
+mat-table{
+    border: solid midnightblue;
+    padding:.2%;
+    margin:.2%;
+    width:auto;
+    text-align: justify;
+}
+
+::ng-deep mat-header-cell{
+    padding:.2%;
+    margin:.2%;
+    width:auto;
+    size: 15px;
+}
+
+::ng-deep mat-cell{
+    padding:.2%;
+    margin:.2%;
+    width:auto;
+}

@@ -1,0 +1,22 @@
+.customField {
+    margin: 1%;
+}
+
+.formWrapper {
+    padding: 1%;
+}
+
+.checkoutWrapper {
+    margin:5%;
+    border: solid midnightblue;
+}
+
+button {
+    margin: 1%;
+    font-size: 20px;
+    bottom:   0;
+}
+
+mat-label {
+    color: rgb(71, 70, 70) !important;
+}
