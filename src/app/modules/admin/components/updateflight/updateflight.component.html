@@ -1,0 +1,45 @@
+<app-admindashboard></app-admindashboard>
+<div class="updateFlightMainWrapper">
+    <div style="margin: 2%;">
+        <h1 style="color: midnightblue;">Update flight</h1>
+    </div>
+    <div class="updateFlightWrapper">
+        <div class="formWrapper">
+            <form [formGroup]="updateFlightForm">
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Flight ID</mat-label>
+                    <input matInput formControlName="flightId" placeholder="Enter flight id" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Flight Number</mat-label>
+                    <input matInput formControlName="flightNumber" placeholder="Enter flight number" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Business Seat Count</mat-label>
+                    <input type="number" formControlName="businessSeatCount" placeholder="Enter Business seat count" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Economy Seat Count</mat-label>
+                    <input type="number" matInput formControlName="economySeatCount" placeholder="Enter Economy seat count" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Meal</mat-label>
+                    <input matInput formControlName="meal" placeholder="Enter Airline status" />
+                </mat-form-field>
+
+                <br>
+                <div class="buttonDiv">
+                    <button mat-raised-button color="primary" (click)=doSubmit()>Update</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

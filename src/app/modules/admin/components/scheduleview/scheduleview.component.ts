@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Inject, OnInit, ViewChild  } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { FlightSchedule } from 'src/app/models/common/flight-schedule.model';
 import { AdminService } from 'src/app/services/admin.service';
@@ -34,7 +35,7 @@ export class ScheduleviewComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor(@Inject(AdminService) private adminService: AdminService) { }
+  constructor(@Inject(AdminService) private adminService: AdminService, private router: Router) { }
 
   ngOnInit(): void {
     this.getschedulelist();
@@ -65,18 +66,30 @@ export class ScheduleviewComponent implements OnInit, AfterViewInit {
   }
 
   update(item:FlightSchedule) {
-    console.log("updated");
-    
+    this.router.navigateByUrl('/admin/updateschedule' , { state: item});
   }
 
   delete(item:FlightSchedule) {
-    console.log("deleted");
+    this.adminService.deleteSchedule(item)
+    .subscribe({
+      next: (res:any)=>{
+        if (res.errorMessage != null) {
+          console.log(res)
+          throwError;
+        } else {
+          console.log("Deletion successful")
+        }
+      },
+      error: (err) => {
+        //handle error
+        console.log('Error caught while deleting ', err);
+      }
+    });
     
   }
 
   add(item:FlightSchedule) {
-    console.log("added flight");
-    
+    this.router.navigateByUrl('/admin/addschedule');
   }
 
 }

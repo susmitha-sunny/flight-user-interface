@@ -1,0 +1,84 @@
+<app-admindashboard></app-admindashboard>
+<div class="addScheduleMainWrapper">
+    <div style="margin: 2%;">
+        <h1 style="color: midnightblue;">Add schedule</h1>
+    </div>
+    <div class="addScheduleWrapper">
+        <div class="formWrapper">
+            <form [formGroup]="addScheduleForm">
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Schedule ID</mat-label>
+                    <input matInput formControlName="scheduleId" required placeholder="Enter schedule id" />
+                    <mat-error *ngIf="addScheduleForm.controls.scheduleId.touched && addScheduleForm.controls.scheduleId.invalid">
+                        <span *ngIf="addScheduleForm.controls.scheduleId.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Departure Airport</mat-label>
+                    <input matInput formControlName="departureAirport" required placeholder="Enter departure airport" />
+                    <mat-error *ngIf="addScheduleForm.controls.departureAirport.touched && addScheduleForm.controls.departureAirport.invalid">
+                        <span *ngIf="addScheduleForm.controls.departureAirport.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Arrival Airport</mat-label>
+                    <input formControlName="arrivalAirport" required placeholder="Enter arrival airport" />
+                    <mat-error *ngIf="addScheduleForm.controls.arrivalAirport.touched && addScheduleForm.controls.arrivalAirport.invalid">
+                        <span *ngIf="addScheduleForm.controls.arrivalAirport.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Departure Time</mat-label>
+                    <input matInput formControlName="departureTime" required placeholder="Enter departure time" />
+                    <mat-error *ngIf="addScheduleForm.controls.departureTime.touched && addScheduleForm.controls.departureTime.invalid">
+                        <span *ngIf="addScheduleForm.controls.departureTime.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Arrival time</mat-label>
+                    <input matInput formControlName="arrivalTime" required placeholder="Enter arrival time" />
+                    <mat-error *ngIf="addScheduleForm.controls.arrivalTime.touched && addScheduleForm.controls.arrivalTime.invalid">
+                        <span *ngIf="addScheduleForm.controls.arrivalTime.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Duration</mat-label>
+                    <input matInput formControlName="duration" required placeholder="Enter Duration" />
+                    <mat-error *ngIf="addScheduleForm.controls.duration.touched && addScheduleForm.controls.duration.invalid">
+                        <span *ngIf="addScheduleForm.controls.duration.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Fare</mat-label>
+                    <input matInput formControlName="fare" required placeholder="Enter Fare" />
+                    <mat-error *ngIf="addScheduleForm.controls.fare.touched && addScheduleForm.controls.fare.invalid">
+                        <span *ngIf="addScheduleForm.controls.fare.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Days</mat-label>
+                    <input matInput formControlName="days" required placeholder="Enter Days" />
+                    <mat-error *ngIf="addScheduleForm.controls.days.touched && addScheduleForm.controls.days.invalid">
+                        <span *ngIf="addScheduleForm.controls.days.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <br>
+                <div class="buttonDiv">
+                    <button mat-raised-button color="primary" (click)=doSubmit()>Add</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

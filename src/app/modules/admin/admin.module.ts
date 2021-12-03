@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { routes } from "./admin-routing";
 
@@ -10,6 +11,12 @@ import { FlightviewComponent } from './components/flightview/flightview.componen
 import { ScheduleviewComponent } from './components/scheduleview/scheduleview.component';
 import { AdminheaderComponent } from './components/adminheader/adminheader.component';
 import { CouponviewComponent } from './components/couponview/couponview.component';
+import { AddairlineComponent } from './components/addairline/addairline.component';
+import { UpdateairlineComponent } from './components/updateairline/updateairline.component';
+import { UpdateflightComponent } from './components/updateflight/updateflight.component';
+import { UpdatescheduleComponent } from './components/updateschedule/updateschedule.component';
+import { AddflightComponent } from './components/addflight/addflight.component';
+import { AddscheduleComponent } from './components/addschedule/addschedule.component';
 
 
 
@@ -20,11 +27,18 @@ import { CouponviewComponent } from './components/couponview/couponview.componen
     FlightviewComponent,
     ScheduleviewComponent,
     AdminheaderComponent,
-    CouponviewComponent
+    CouponviewComponent,
+    AddairlineComponent,
+    UpdateairlineComponent,
+    UpdateflightComponent,
+    UpdatescheduleComponent,
+    AddflightComponent,
+    AddscheduleComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ]
 })

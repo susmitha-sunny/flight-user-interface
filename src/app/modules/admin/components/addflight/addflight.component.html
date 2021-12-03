@@ -1,0 +1,60 @@
+<app-admindashboard></app-admindashboard>
+<div class="addFlightMainWrapper">
+    <div style="margin: 2%;">
+        <h1 style="color: midnightblue;">Add flight</h1>
+    </div>
+    <div class="addFlightWrapper">
+        <div class="formWrapper">
+            <form [formGroup]="addFlightForm">
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Flight ID</mat-label>
+                    <input matInput formControlName="flightId" required placeholder="Enter flight id" />
+                    <mat-error *ngIf="addFlightForm.controls.flightId.touched && addFlightForm.controls.flightId.invalid">
+                        <span *ngIf="addFlightForm.controls.flightId.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Flight Number</mat-label>
+                    <input matInput formControlName="flightNumber" required placeholder="Enter flight number" />
+                    <mat-error *ngIf="addFlightForm.controls.flightNumber.touched && addFlightForm.controls.flightNumber.invalid">
+                        <span *ngIf="addFlightForm.controls.flightNumber.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Business Seat Count</mat-label>
+                    <input type="number" formControlName="businessSeatCount" required placeholder="Enter Business seat count" />
+                    <mat-error *ngIf="addFlightForm.controls.businessSeatCount.touched && addFlightForm.controls.businessSeatCount.invalid">
+                        <span *ngIf="addFlightForm.controls.businessSeatCount.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Economy Seat Count</mat-label>
+                    <input type="number" matInput formControlName="economySeatCount" required placeholder="Enter Economy seat count" />
+                    <mat-error *ngIf="addFlightForm.controls.economySeatCount.touched && addFlightForm.controls.economySeatCount.invalid">
+                        <span *ngIf="addFlightForm.controls.economySeatCount.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Meal</mat-label>
+                    <input matInput formControlName="meal" required placeholder="Enter Airline status" />
+                    <mat-error *ngIf="addFlightForm.controls.meal.touched && addFlightForm.controls.meal.invalid">
+                        <span *ngIf="addFlightForm.controls.meal.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <br>
+                <div class="buttonDiv">
+                    <button mat-raised-button color="primary" (click)=doSubmit()>Add</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtRequest } from '../models/admin/jwt-request.model';
 import { Airline } from '../models/common/airline.model';
+import { Flight } from '../models/common/flight.model';
+import { FlightSchedule } from '../models/common/flight-schedule.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ import { Airline } from '../models/common/airline.model';
 export class AdminService {
 
   airlineList:Airline[];
+  flightList:Flight[];
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -70,17 +73,93 @@ export class AdminService {
     return this.http.put<boolean>(host, item, { headers })
   }
 
-  // add(item:Airline) {
-  //   let token = localStorage.getItem("token");
-  //   let host = "http://localhost:8000/flight-admin-service/addairline";
+  addAirline(item:Airline) {
+    let token = localStorage.getItem("token");
+    let host = "http://localhost:8000/flight-admin-service/addairline";
 
-  //   const headers= new HttpHeaders().set('Authorization', token);
+    const headers= new HttpHeaders().set('Authorization', token);
 
-  //   return this.http.post<string>(host, item, { headers })
-  // }
+    return this.http.post<Airline>(host, item, { headers })
+  }
 
-  // setAirlinelist(airlinelist:any){
-  //   this.airlineList=airlinelist;
-  // }
+  addFlight(item:Flight) {
+    let token = localStorage.getItem("token");
+    let host = "http://localhost:8000/flight-admin-service/addflight";
+
+    const headers= new HttpHeaders().set('Authorization', token);
+
+    return this.http.post<Flight>(host, item, { headers })
+  }
+
+  addSchedule(item:FlightSchedule) {
+    let token = localStorage.getItem("token");
+    let host = "http://localhost:8000/flight-admin-service/addschedule";
+
+    const headers= new HttpHeaders().set('Authorization', token);
+
+    return this.http.post<FlightSchedule>(host, item, { headers })
+  }
+
+  updateAirline(item:Airline) {
+    let token = localStorage.getItem("token");
+    let host = "http://localhost:8000/flight-admin-service/updateairline";
+
+    const headers= new HttpHeaders().set('Authorization', token);
+
+    return this.http.put<boolean>(host, item, { headers })
+  }
+
+  updateFlight(item:Flight) {
+    let token = localStorage.getItem("token");
+    let host = "http://localhost:8000/flight-admin-service/updateflight";
+
+    const headers= new HttpHeaders().set('Authorization', token);
+
+    return this.http.put<boolean>(host, item, { headers })
+  }
+
+  updateSchedule(item:FlightSchedule) {
+    let token = localStorage.getItem("token");
+    let host = "http://localhost:8000/flight-admin-service/updateschedule";
+
+    const headers= new HttpHeaders().set('Authorization', token);
+
+    return this.http.put<boolean>(host, item, { headers })
+  }
+
+  deleteAirline(item:Airline) {
+    let token = localStorage.getItem("token");
+    let host = "http://localhost:8000/flight-admin-service/deleteairline";
+
+    const headers= new HttpHeaders().set('Authorization', token);
+
+    return this.http.delete<boolean>(host, { headers })
+  }
+
+  deleteFlight(item:Flight) {
+    let token = localStorage.getItem("token");
+    let host = "http://localhost:8000/flight-admin-service/deleteflight";
+
+    const headers= new HttpHeaders().set('Authorization', token);
+
+    return this.http.delete<boolean>(host, { headers })
+  }
+
+  deleteSchedule(item:FlightSchedule) {
+    let token = localStorage.getItem("token");
+    let host = "http://localhost:8000/flight-admin-service/deleteschedule";
+
+    const headers= new HttpHeaders().set('Authorization', token);
+
+    return this.http.delete<boolean>(host, { headers })
+  }
+
+  setAirlineList(item:Airline[]){
+    this.airlineList = item;
+  }
+
+  setFlightList(item:Flight[]){
+    this.flightList = item;
+  }
 
 }

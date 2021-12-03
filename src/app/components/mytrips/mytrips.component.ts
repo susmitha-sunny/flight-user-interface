@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MyTrips } from 'src/app/models/postbooking/my-trips.model';
-import { PostbookingService } from 'src/app/services/postbooking.service';
 
 @Component({
   selector: 'app-mytrips',

@@ -1,0 +1,38 @@
+.customField {
+    margin: 1%;
+}
+
+.formWrapper {
+    padding: 1%;
+}
+
+.addScheduleWrapper {
+    padding: 5%;
+    margin: auto;
+    width: 30%;
+    height: 40%;
+    border: solid midnightblue;
+}
+
+button {
+    font-size: 20px;
+    margin: 1%;
+}
+
+mat-label {
+    color: rgb(71, 70, 70) !important;
+}
+
+form {
+    text-align: center;
+}
+
+.addScheduleMainWrapper {
+    background-color: lightgoldenrodyellow;
+    padding: 1%;
+    height: 100%
+}
+
+button.mat-raised-button:hover {
+    background-color: midnightblue;
+}

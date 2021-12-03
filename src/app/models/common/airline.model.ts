@@ -10,6 +10,11 @@ export class Airline {
         airlineName: string,
         iataCode: string,
         airlineStatus: string
-   ) {  }
+   ) { 
+       this.airlineId = airlineId;
+       this.airlineName = airlineName;
+       this.iataCode = iataCode;
+       this.airlineStatus = airlineStatus;
+    }
 }
 
