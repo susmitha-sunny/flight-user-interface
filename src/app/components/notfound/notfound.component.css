@@ -1,0 +1,16 @@
+img {
+    width: 100%;
+}
+
+h1 {
+    color: midnightblue;
+    font-size: 200%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+div {
+    background-color: lightgoldenrodyellow;
+    width: 100%;
+    height: 100%;
+    border: solid lightgoldenrodyellow;
+}

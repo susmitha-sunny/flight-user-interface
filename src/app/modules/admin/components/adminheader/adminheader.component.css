@@ -1,0 +1,29 @@
+button {
+    margin: 0;
+}
+
+.navRight {
+    margin-left: 35%;
+    right: 0;
+    margin-right: 2%;
+}
+
+.mat-toolbar {
+    background: midnightblue;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    margin: 5%;
+    color: whitesmoke;
+    text-decoration: none;
+    border: solid teal;
+    border-radius: 20px;
+    padding: 3%;
+}
+
+a:active {
+    background-color: lightgray;
+}

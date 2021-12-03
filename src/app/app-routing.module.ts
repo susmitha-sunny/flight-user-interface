@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
-import { SearchresultComponent } from './components/searchresult/searchresult.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { MytripsComponent } from './components/mytrips/mytrips.component'
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent},
     { path: "signin", component: SigninComponent},
-    { path: "searchresult", component: SearchresultComponent},
-    { path: "checkout", component: CheckoutComponent},
-    //{ path: "welcome/:name", component: WelcomeComponent},
-    // { path: "**", component: NotFoundComponent},
-    { path: "**", redirectTo: "home"}
+    { path: "mytrips", component: MytripsComponent},
+    { path: "flight", loadChildren: () => import("./modules/flight/flight.module").then(m => m.FlightModule)},
+    { path: "admin", loadChildren: () => import("./modules/admin/admin.module").then(m => m.AdminModule)},
+    { path: "user", loadChildren: () => import("./modules/user/user.module").then(m => m.UserModule)},
+    {path: "notfound", component: NotfoundComponent},
+    { path: "",  pathMatch: 'full', redirectTo: "home"},
+    { path: "**", pathMatch: 'full', redirectTo: "notfound"}
 ];
 
 @NgModule({

@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+    <div>
+        <span>
+            <button mat-button (click)="gohome()">
+                <img src="../../../../../favicon.ico" alt="logo" width="30em" height="30em">
+                GoTravel
+            </button>
+        </span>
+    </div>
+    <div style="margin-left:25%;">
+        <a routerLink="/admin/airlineview">Airline</a>
+        <a routerLink="/admin/flightview">Flight</a>
+        <a routerLink="/admin/scheduleview">Schedule</a>
+        <!-- <a routerLink="/admin/couponview">Coupon</a> -->
+    </div>
+    <div class="navRight">
+        <button mat-button (click)="signout()">
+            <mat-icon>
+                person
+            </mat-icon>
+            Sign Out
+        </button>
+    </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

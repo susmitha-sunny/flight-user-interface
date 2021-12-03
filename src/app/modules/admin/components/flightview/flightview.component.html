@@ -1,0 +1,63 @@
+<app-admindashboard></app-admindashboard>
+<div class="flightWrapper">
+    <div style="margin: 1%;">
+        <h1 style="color: midnightblue;">Flights</h1>
+    </div>
+
+    <div style="margin: 1%;">
+        <h3 style="color: midnightblue;">{{exception}}</h3>
+    </div>
+
+    <button mat-raised-button style="margin: 2%;" color="primary">Add Flight</button>
+
+    <div>
+        <mat-table #dataTable [dataSource]="dataSource">
+            <!-- COLUMN INFO -->
+
+            <ng-container color="primary" matColumnDef="flightId">
+                <mat-header-cell *matHeaderCellDef>Flight ID</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.flightId}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="airlineName">
+                <mat-header-cell *matHeaderCellDef>Airline Name</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.airline.airlineName}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="flightNumber">
+                <mat-header-cell *matHeaderCellDef>Flight Number</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.flightNumber}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="businessSeatCount">
+                <mat-header-cell *matHeaderCellDef>Business Seats</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.businessSeatCount}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="economySeatCount">
+                <mat-header-cell *matHeaderCellDef>Economy Seats</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.economySeatCount}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="meal">
+                <mat-header-cell *matHeaderCellDef>Meal</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.meal}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="update">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let item"> <button mat-raised-button style="font-size: smaller;" (click)="update(item)">Update</button> </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let item"> <button mat-raised-button style="font-size: smaller;" (click)="delete(item)">Delete</button> </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+            <mat-row *matRowDef="let rowData; columns: columnsToDisplay;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[2, 5, 10, 20]" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>

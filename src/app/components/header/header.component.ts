@@ -8,13 +8,23 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+
+  constructor(private router: Router) { 
+  }
 
   ngOnInit(): void {
   }
 
   getsignin() {
     this.router.navigateByUrl('/signin')
+  }
+
+  gohome() {
+    this.router.navigateByUrl('/home')
+  }
+
+  mytrips() {
+    this.router.navigateByUrl('/mytrips')
   }
 
 }

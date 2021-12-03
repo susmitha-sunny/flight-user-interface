@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ErrorType } from 'src/app/models/common/error-type.model';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(AdminService) private adminService: AdminService,
+  private router: Router) { }
 
   ngOnInit(): void {
+    localStorage.removeItem("role");
+    localStorage.removeItem("token");
   }
 
 }

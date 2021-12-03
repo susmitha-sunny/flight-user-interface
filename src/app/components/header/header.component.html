@@ -1,14 +1,14 @@
 <mat-toolbar color="primary">
     <div>
         <span>
-            <button mat-button>
+            <button mat-button (click)="gohome()">
                 <img src="../../../favicon.ico" alt="logo" width="30em" height="30em">
                 GoTravel
             </button>
         </span>
     </div>
     <div class="navRight">
-        <button mat-button>
+        <button mat-button (click)="mytrips()">
             <mat-icon>
                 flight
             </mat-icon>
@@ -16,10 +16,16 @@
         </button>
         <button mat-button (click)="getsignin()">
             <mat-icon>
-                account-circle
+                person
             </mat-icon>
-            SignIn
+            Sign In
         </button>
+        <!-- <button *ngIf="isloggedIn" mat-button (click)="signout()">
+            <mat-icon>
+                flight
+            </mat-icon>
+            SignOut
+        </button> -->
     </div>
 </mat-toolbar>
 

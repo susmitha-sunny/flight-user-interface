@@ -1,0 +1,167 @@
+<app-tripsheader></app-tripsheader>
+<div class="checkoutMainWrapper">
+    <div style="margin: 1%;">
+        <h1 style="color: midnightblue;">Checkout</h1>
+    </div>
+    <div class="checkoutWrapper">
+        <div class="summary" style="margin-left: 1%;">
+            <h2 style="color: midnightblue;"> Summary</h2>
+            <h4>
+                {{flightDetailsResponse.flightSchedule.departureAirport}} to {{flightDetailsResponse.flightSchedule.arrivalAirport}}
+                <br> {{departureDate.toDateString() | date}} - {{flightDetailsResponse.flightSchedule.flight.airline.airlineName}} {{flightDetailsResponse.flightSchedule.flight.flightNumber}}
+                <br> {{paxcount}} passenger(s) - {{flightDetailsResponse.adultCount}} Adult, {{flightDetailsResponse.childCount}} Child, {{flightDetailsResponse.infantCount}} Infant
+                <br> Total Fare: ${{totalFare}}
+            </h4>
+        </div>
+        <hr>
+        <h2 style="margin-left: 1%; color: midnightblue;"> Enter details</h2>
+        <div class="formWrapper">
+            <form [formGroup]="checkoutForm">
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email" required placeholder="Enter email" />
+                    <mat-error *ngIf="checkoutForm.controls.email.touched && checkoutForm.controls.email.invalid">
+                        <span *ngIf="checkoutForm.controls.email.errors?.required">This field is mandatory.</span>
+                        <span *ngIf="checkoutForm.controls.email.errors?.email">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Phone</mat-label>
+                    <input matInput formControlName="phone" required placeholder="Enter 10 digit phone number" />
+                    <mat-error *ngIf="checkoutForm.controls.phone.touched && checkoutForm.controls.phone.invalid">
+                        <span *ngIf="checkoutForm.controls.phone.errors?.required">This field is mandatory.</span>
+                        <span *ngIf="checkoutForm.controls.phone.errors?.pattern">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <hr>
+
+                <div formArrayName="items">
+
+                    <ng-container *ngFor="itemFormGroup of itemFormGroups.controls; let i = index;">
+                        <div [formGroupName]="i">
+                            <mat-form-field appearance="outline" class="customField">
+                                <mat-label>First Name</mat-label>
+                                <input matInput formControlName="firstname" required placeholder="Enter first name" />
+                                <!-- <mat-error *ngIf="checkoutForm.controls.items.value[i].controls.firstname.touched && checkoutForm.controls.items.value[i].controls.firstname.invalid">
+                                    <span *ngIf="checkoutForm.controls.items.value[i].controls.firstname.errors?.required">This field is mandatory.</span>
+                                    <span *ngIf="checkoutForm.controls.items.value[i].controls.firstname.errors?.pattern">This field is invalid.</span>
+                                </mat-error> -->
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="customField">
+                                <mat-label>Middle Name</mat-label>
+                                <input matInput formControlName="middlename" placeholder="Enter middle name" />
+                                <!-- <mat-error *ngIf="checkoutForm.controls.paxItems.value[i].controls.middlename.touched && checkoutForm.controls.paxItems.value[i].controls.middlename.invalid">
+                                <span *ngIf="checkoutForm.controls.paxItems.value[i].controls.middlename.errors?.pattern">This field is invalid.</span>
+                            </mat-error> -->
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="customField">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput formControlName="lastname" required placeholder="Enter last name" />
+                                <!-- <mat-error *ngIf="checkoutForm.controls.paxItems.value[i].controls.lastname.touched && checkoutForm.controls.paxItems.value[i].controls.lastname.invalid">
+                                <span *ngIf="checkoutForm.controls.paxItems.value[i].controls.lastname.errors?.required">This field is mandatory.</span>
+                                <span *ngIf="checkoutForm.controls.paxItems.value[i].controls.lastname.errors?.pattern">This field is invalid.</span>
+                            </mat-error> -->
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="customField">
+                                <mat-label>Date of Birth</mat-label>
+                                <input matInput formControlName="dateofBirth" required [matDatepicker]="picker" [max]="today" placeholder="Choose date of birth" />
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <!-- <mat-error *ngIf="checkoutForm.controls.paxItems.value[i].controls.dateofBirth.touched && checkoutForm.controls.paxItems.value[i].controls.dateofBirth.invalid">
+                                <span *ngIf="checkoutForm.controls.paxItems.value[i].controls.dateofBirth.errors?.required">This field is
+                                    mandatory.</span>
+                            </mat-error> -->
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="customField">
+                                <mat-label>Gender</mat-label>
+                                <mat-select formControlName="gender" required>
+                                    <mat-option value="M">Male</mat-option>
+                                    <mat-option value="F">Female</mat-option>
+                                    <mat-option value="O">Other</mat-option>
+                                </mat-select>
+                                <!-- <mat-error *ngIf="checkoutForm.controls.paxItems.value[i].controls.gender.touched && checkoutForm.controls.paxItems.value[i].controls.gender.invalid">
+                                <span *ngIf="checkoutForm.controls.paxItems.value[i].controls.gender.errors?.required">This field is mandatory.</span>
+                            </mat-error> -->
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="customField">
+                                <mat-label>Traveller Category</mat-label>
+                                <mat-select formControlName="travelerType" required>
+                                    <mat-option value="ADT">Adult</mat-option>
+                                    <mat-option value="CHD">Child</mat-option>
+                                    <mat-option value="INF">Infant</mat-option>
+                                </mat-select>
+                                <!-- <mat-error *ngIf="checkoutForm.controls.paxItems.value[i].controls.travelerType.touched && checkoutForm.controls.paxItems.value[i].controls.travelerType.invalid">
+                                <span *ngIf="checkoutForm.controls.paxItems.value[i].controls.travelerType.errors?.required">This field is
+                                    mandatory.</span>
+                            </mat-error> -->
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="customField">
+                                <mat-label>Meal Preference</mat-label>
+                                <mat-select formControlName="mealPreference">
+                                    <mat-option *ngFor="let item of mealList" value={{item}}>
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                                <!-- <mat-error *ngIf="checkoutForm.controls.paxItems.value[i].controls.gender.touched && checkoutForm.controls.paxItems.value[i].controls.gender.invalid">
+                                <span *ngIf="checkoutForm.controls.paxItems.value[i].controls.gender.errors?.required">This field is mandatory.</span>
+                            </mat-error> -->
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="customField">
+                                <mat-label>Seat Number</mat-label>
+                                <mat-select formControlName="seatNumber">
+                                    <mat-option *ngFor="let item of seatList" value={{item}}>
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                                <!-- <mat-error *ngIf="checkoutForm.controls.paxItems.value[i].controls.gender.touched && checkoutForm.controls.paxItems.value[i].controls.gender.invalid">
+                                <span *ngIf="checkoutForm.controls.paxItems.value[i].controls.gender.errors?.required">This field is mandatory.</span>
+                            </mat-error> -->
+                            </mat-form-field>
+
+
+                        </div>
+                    </ng-container>
+                </div>
+
+                <button mat-raised-button color="primary" style="font-size: small;" [disabled]="paxIndex >= this.paxcount" (click)="addItem()">Add
+                    Passenger</button>
+
+                <hr>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Card</mat-label>
+                    <input matInput formControlName="cardno" required placeholder="Enter 16 digit card number" />
+                    <mat-error *ngIf="checkoutForm.controls.cardno.touched && checkoutForm.controls.cardno.invalid">
+                        <span *ngIf="checkoutForm.controls.cardno.errors?.required">This field is mandatory.</span>
+                        <span *ngIf="checkoutForm.controls.cardno.errors?.pattern">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Discount Coupon</mat-label>
+                    <input matInput formControlName="discountcoupon" placeholder="Enter discount coupon code" />
+                </mat-form-field>
+                <button *ngIf="checkoutForm.controls.discountcoupon.valid" mat-raised-button color="primary" style="font-size: small;" (click)="checkcoupon()">Check validity</button>
+                <div *ngIf="isCouponValid" style="margin-left: 1%; color: midnightblue;">Hurray! Fare reduced from {{totalFare}} to {{newTotal}}</div>
+                <div *ngIf="checkoutForm.controls.discountcoupon.touched && !isCouponValid" style="margin-left: 1%; color: midnightblue;">Sorry! Invalid coupon</div>
+
+
+                <div class="buttonDiv">
+                    <button mat-raised-button color="primary" [disabled]="checkoutForm.invalid" (click)="doSubmit()">Checkout</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<router-outlet></router-outlet>

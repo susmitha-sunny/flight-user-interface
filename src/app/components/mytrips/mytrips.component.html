@@ -1,0 +1,40 @@
+<app-commonheader></app-commonheader>
+<div class="myTripsMainWrapper">
+    <div style="margin: 2%;">
+        <h1 style="color: midnightblue;">Find your trip</h1>
+    </div>
+    <div class="myTripsWrapper">
+        <div class="formWrapper">
+            <form [formGroup]="myTripsForm">
+                <div class="buttonDiv">
+                    <button mat-raised-button color="secondary" style="font-size: small;" (click)="useEmail()">Email ID</button>
+                    <button mat-raised-button color="secondary" style="font-size: small;" (click)="usePNR()">PNR</button>
+                </div>
+
+                <mat-form-field *ngIf="isEmail" appearance="outline" class="customField">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email" placeholder="Enter email id" />
+                    <mat-error *ngIf="myTripsForm.controls.email.touched && myTripsForm.controls.email.invalid">
+                        <span *ngIf="myTripsForm.controls.email.errors?.email">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field *ngIf="isPNR" appearance="outline" class="customField">
+                    <mat-label>PNR</mat-label>
+                    <input matInput formControlName="pnr" placeholder="Enter PNR" />
+                    <mat-error *ngIf="myTripsForm.controls.pnr.touched && myTripsForm.controls.pnr.invalid">
+                        <span *ngIf="myTripsForm.controls.pnr.errors?.pattern">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <br>
+                <div class="buttonDiv">
+                    <button mat-raised-button color="primary" (click)=doSubmit()>Go</button>
+                </div>
+                <span *ngIf="isError">Sorry! Try again</span>
+            </form>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
