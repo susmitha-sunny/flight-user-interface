@@ -1,0 +1,60 @@
+<app-admindashboard></app-admindashboard>
+<div class="addAirlineMainWrapper">
+    <div style="margin: 2%;">
+        <h1 style="color: midnightblue;">Add airline</h1>
+    </div>
+    <div class="addAirlineWrapper">
+        <div class="formWrapper">
+            <form [formGroup]="addAirlineForm">
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Airline ID</mat-label>
+                    <input matInput formControlName="airlineId" required placeholder="Enter airline id" />
+                    <mat-error *ngIf="addAirlineForm.controls.airlineId.touched && addAirlineForm.controls.airlineId.invalid">
+                        <span *ngIf="addAirlineForm.controls.airlineId.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Airline Name</mat-label>
+                    <input matInput formControlName="airlineName" required placeholder="Enter airline name" />
+                    <mat-error *ngIf="addAirlineForm.controls.airlineName.touched && addAirlineForm.controls.airlineName.invalid">
+                        <span *ngIf="addAirlineForm.controls.airlineName.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>IATA Code</mat-label>
+                    <input matInput formControlName="iataCode" required placeholder="Enter IATA Code" />
+                    <mat-error *ngIf="addAirlineForm.controls.iataCode.touched && addAirlineForm.controls.iataCode.invalid">
+                        <span *ngIf="addAirlineForm.controls.iataCode.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Airline Status</mat-label>
+                    <input matInput formControlName="airlineStatus" required placeholder="Enter Airline status" />
+                    <mat-error *ngIf="addAirlineForm.controls.airlineStatus.touched && addAirlineForm.controls.airlineStatus.invalid">
+                        <span *ngIf="addAirlineForm.controls.airlineStatus.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Airline Status/mat-label>
+                        <input matInput formControlName="airlineStatus" required placeholder="Enter airline status" />
+                        <mat-error *ngIf="addAirlineForm.controls.airlineStatus.touched && addAirlineForm.controls.airlineStatus.invalid">
+                            <span *ngIf="addAirlineForm.controls.airlineStatus.errors?.required">This field is mandatory.</span>
+                        </mat-error>
+                </mat-form-field> -->
+
+                <br>
+                <div class="buttonDiv">
+                    <button mat-raised-button color="primary" (click)=doSubmit()>Add</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

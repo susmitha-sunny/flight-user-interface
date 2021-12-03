@@ -8,7 +8,7 @@
         <h3 style="color: midnightblue;">{{exception}}</h3>
     </div>
 
-    <button mat-raised-button style="margin: 2%;" color="primary">Add Airline</button>
+    <button mat-raised-button style="margin: 2%;" color="primary" (click)="add()">Add Airline</button>
 
     <div>
         <mat-table #dataTable [dataSource]="dataSource">

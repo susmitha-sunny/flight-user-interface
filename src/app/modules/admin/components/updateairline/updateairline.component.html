@@ -1,0 +1,40 @@
+<app-admindashboard></app-admindashboard>
+<div class="updateAirlineMainWrapper">
+    <div style="margin: 2%;">
+        <h1 style="color: midnightblue;">Update airline</h1>
+    </div>
+    <div class="updateAirlineWrapper">
+        <div class="formWrapper">
+            <form [formGroup]="updateAirlineForm">
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Airline ID</mat-label>
+                    <input matInput formControlName="airlineId" placeholder="Enter airline id" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Airline Name</mat-label>
+                    <input matInput formControlName="airlineName" placeholder="Enter airline name" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>IATA Code</mat-label>
+                    <input matInput formControlName="iataCode" placeholder="Enter IATA Code" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Airline Status</mat-label>
+                    <input matInput formControlName="airlineStatus" placeholder="Enter Airline status" />
+                </mat-form-field>
+
+                <br>
+                <div class="buttonDiv">
+                    <button mat-raised-button color="primary" (click)=doSubmit()>Update</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

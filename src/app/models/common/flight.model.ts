@@ -11,7 +11,7 @@ export class Flight {
 
     constructor(
         flightId: number,
-        airline: Airline,
+        // airline: Airline,
         flightNumber: string,
         businessSeatCount: number,
         economySeatCount: number,

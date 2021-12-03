@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Airline } from 'src/app/models/common/airline.model';
 import { AdminService } from 'src/app/services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-airlineview',
@@ -33,7 +34,7 @@ export class AirlineviewComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor(@Inject(AdminService) private adminService: AdminService) { }
+  constructor(@Inject(AdminService) private adminService: AdminService, private router: Router) { }
 
   ngOnInit(): void {
     this.getairlinelist();
@@ -48,6 +49,7 @@ export class AirlineviewComponent implements OnInit, AfterViewInit {
           throwError;
         } else {
           this.airlineList = res;
+          this.adminService.setAirlineList(this.airlineList);
           this.dataSource = new MatTableDataSource<Airline>(this.airlineList);
           if (this.dataSource) {
             console.log(this.dataSource)
@@ -114,18 +116,30 @@ export class AirlineviewComponent implements OnInit, AfterViewInit {
   }
 
   update(item:Airline) {
-    console.log("updated");
-    
+    this.router.navigateByUrl('/admin/updateairline' , { state: item});
   }
 
   delete(item:Airline) {
-    console.log("deleted");
+    this.adminService.deleteAirline(item)
+    .subscribe({
+      next: (res:any)=>{
+        if (res.errorMessage != null) {
+          console.log(res)
+          throwError;
+        } else {
+          console.log("Deletion successful")
+        }
+      },
+      error: (err) => {
+        //handle error
+        console.log('Error caught while deleting ', err);
+      }
+    });
     
   }
 
-  add(item:Airline) {
-    console.log("added airline");
-    
+  add() {
+    this.router.navigateByUrl('/admin/addairline');
   }
 
 }

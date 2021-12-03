@@ -1,0 +1,60 @@
+<app-admindashboard></app-admindashboard>
+<div class="updateScheduleMainWrapper">
+    <div style="margin: 2%;">
+        <h1 style="color: midnightblue;">Update schedule</h1>
+    </div>
+    <div class="updateScheduleWrapper">
+        <div class="formWrapper">
+            <form [formGroup]="updateScheduleForm">
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Schedule ID</mat-label>
+                    <input matInput formControlName="scheduleId" placeholder="Enter schedule id" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Departure Airport</mat-label>
+                    <input matInput formControlName="departureAirport" placeholder="Enter departure airport" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Arrival Airport</mat-label>
+                    <input formControlName="arrivalAirport" placeholder="Enter arrival airport" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Departure Time</mat-label>
+                    <input matInput formControlName="departureTime" placeholder="Enter departure time" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Arrival time</mat-label>
+                    <input matInput formControlName="arrivalTime" placeholder="Enter arrival time" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Duration</mat-label>
+                    <input matInput formControlName="duration" placeholder="Enter Duration" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Fare</mat-label>
+                    <input matInput formControlName="fare" placeholder="Enter Fare" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Days</mat-label>
+                    <input matInput formControlName="days" placeholder="Enter Days" />
+                </mat-form-field>
+
+                <br>
+                <div class="buttonDiv">
+                    <button mat-raised-button color="primary" (click)=doSubmit()>Update</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
