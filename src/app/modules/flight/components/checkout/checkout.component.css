@@ -1,0 +1,34 @@
+.checkoutMainWrapper {
+    background-color: lightgoldenrodyellow;
+    width: 100%;
+    height: 100%;
+    border: solid #fafad2;
+    padding-bottom: 80%;
+}
+
+.customField {
+    margin: 1%;
+}
+
+.formWrapper {
+    padding: 1%;
+}
+
+.checkoutWrapper {
+    margin: 5%;
+    border: solid midnightblue;
+}
+
+button {
+    margin: 1%;
+    font-size: 20px;
+    bottom: 0;
+}
+
+mat-label {
+    color: rgb(71, 70, 70) !important;
+}
+
+button.mat-raised-button:hover {
+    background-color: midnightblue;
+}

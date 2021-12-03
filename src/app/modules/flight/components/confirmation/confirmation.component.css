@@ -1,0 +1,18 @@
+.confirmationWrapper {
+    margin: 5%;
+    border: solid midnightblue;
+    background-color: lightgoldenrodyellow;
+    padding: 1%
+}
+
+.confirmationMainWrapper {
+    background-color: lightgoldenrodyellow;
+    width: 100%;
+    height: 100%;
+    border: solid #fafad2;
+    padding-bottom: 50%;
+}
+
+button.mat-raised-button:hover {
+    background-color: midnightblue;
+}

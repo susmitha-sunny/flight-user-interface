@@ -1,0 +1,90 @@
+<app-simpleheader></app-simpleheader>
+<div class="tripsWrapper">
+    <div style="margin: 1%;">
+        <h1 style="color: midnightblue;">Manage Reservations</h1>
+    </div>
+
+    <div style="margin: 1%;">
+        <h3 style="color: midnightblue;">Email ID: {{email}}</h3>
+    </div>
+
+    <div>
+        <mat-table #dataTable [dataSource]="dataSource">
+            <!-- COLUMN INFO -->
+
+            <ng-container color="primary" matColumnDef="pnr">
+                <mat-header-cell *matHeaderCellDef>PNR</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.pnr}} </mat-cell>
+            </ng-container>
+
+            <!-- <ng-container color="primary" matColumnDef="emailId">
+                <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.emailId}} </mat-cell>
+            </ng-container> -->
+
+            <ng-container color="primary" matColumnDef="phone">
+                <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.phone}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="departureDate">
+                <mat-header-cell *matHeaderCellDef>Departure Date</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.departureDate}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="departureAirport">
+                <mat-header-cell *matHeaderCellDef>Departure Airport</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.departureAirport}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="arrivalAirport">
+                <mat-header-cell *matHeaderCellDef>Arrival Airport</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.arrivalAirport}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="airlineName">
+                <mat-header-cell *matHeaderCellDef>Airline Name</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.airlineName}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="flightNumber">
+                <mat-header-cell *matHeaderCellDef>Flight Number</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.flightNumber}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="departureTime">
+                <mat-header-cell *matHeaderCellDef>Departure Time</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.departureTime}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="arrivalTime">
+                <mat-header-cell *matHeaderCellDef>Arrival Time</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.arrivalTime}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="duration">
+                <mat-header-cell *matHeaderCellDef>Duration</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.duration}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="paxcount">
+                <mat-header-cell *matHeaderCellDef>Passengers Count</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{getPaxCount(item)}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="bookingStatus">
+                <mat-header-cell *matHeaderCellDef>Booking Status</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.bookingStatus}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="cancel">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let item"> <button mat-raised-button style="font-size: smaller;" (click)="cancel(item)" [disabled]="item.bookingStatus=='CANCELLED' || item.bookingStatus=='PAST'">Cancel</button> </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+            <mat-row *matRowDef="let rowData; columns: columnsToDisplay;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[2, 5, 10, 20]" showFirstLastButtons>
+        </mat-paginator>
+    </div>

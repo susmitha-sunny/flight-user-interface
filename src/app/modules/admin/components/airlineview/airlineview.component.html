@@ -1,0 +1,62 @@
+<app-admindashboard></app-admindashboard>
+<div class="airlineWrapper">
+    <div style="margin: 1%;">
+        <h1 style="color: midnightblue;">Airlines</h1>
+    </div>
+
+    <div style="margin: 1%;">
+        <h3 style="color: midnightblue;">{{exception}}</h3>
+    </div>
+
+    <button mat-raised-button style="margin: 2%;" color="primary">Add Airline</button>
+
+    <div>
+        <mat-table #dataTable [dataSource]="dataSource">
+            <!-- COLUMN INFO -->
+
+            <ng-container color="primary" matColumnDef="airlineId">
+                <mat-header-cell *matHeaderCellDef>Airline ID</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.airlineId}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="airlineName">
+                <mat-header-cell *matHeaderCellDef>Airline Name</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.airlineName}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="iataCode">
+                <mat-header-cell *matHeaderCellDef>IATA Code</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.iataCode}} </mat-cell>
+            </ng-container>
+
+            <ng-container color="primary" matColumnDef="airlineStatus">
+                <mat-header-cell *matHeaderCellDef>Airline Status</mat-header-cell>
+                <mat-cell *matCellDef="let item"> {{item.airlineStatus}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="block">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let item"> <button mat-raised-button style="font-size: smaller;" (click)="block(item)" [disabled]="item.airlineStatus=='INACTIVE'">Block</button> </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="unblock">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let item"> <button mat-raised-button style="font-size: smaller;" (click)="unblock(item)" [disabled]="item.airlineStatus=='ACTIVE'">Unblock</button> </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="update">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let item"> <button mat-raised-button style="font-size: smaller;" (click)="update(item)">Update</button> </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let item"> <button mat-raised-button style="font-size: smaller;" (click)="delete(item)">Delete</button> </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+            <mat-row *matRowDef="let rowData; columns: columnsToDisplay;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[2, 5, 10, 20]" showFirstLastButtons>
+        </mat-paginator>
+    </div>

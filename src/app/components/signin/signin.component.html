@@ -1,31 +1,33 @@
-<div style="margin: 2%;">
-    <h1 style="color: midnightblue;">Sign in</h1>
-  </div>
-<div class="signinWrapper">
-    <div class="formWrapper">
-      <form [formGroup]="loginForm" (submit)="submit()">
-        <mat-form-field appearance="outline" class="customField">
-          <mat-label>Username</mat-label>
-          <input matInput formControlName="username" required placeholder="Enter username"/>
-          <mat-error *ngIf="loginForm.controls.username.touched && loginForm.controls.username.invalid">
-            <span *ngIf="loginForm.controls.username.errors?.required">This field is mandatory.</span>
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="customField">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput formControlName="password" required placeholder="Enter username"/>
-            <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
-              <span *ngIf="loginForm.controls.password.errors?.required">This field is mandatory.</span>
-            </mat-error>
-          </mat-form-field>
-          <br>
-          <div class="buttonDiv">
-          <button mat-raised-button color="primary" [disabled]="loginForm.invalid" type="submit">Sign in</button>
-        </div>
-        </form>
-      </div>
+<app-commonheader></app-commonheader>
+<div class="signinMainWrapper">
+    <div style="margin: 2%;">
+        <h1 style="color: midnightblue;">Sign In</h1>
     </div>
-    
-    <router-outlet></router-outlet>
-    
+    <div class="signinWrapper">
+        <div class="formWrapper">
+            <form [formGroup]="loginForm" (submit)="submit()">
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username" required placeholder="Enter username" />
+                    <mat-error *ngIf="loginForm.controls.username.touched && loginForm.controls.username.invalid">
+                        <span *ngIf="loginForm.controls.username.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="customField">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password" required placeholder="Enter username" />
+                    <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+                        <span *ngIf="loginForm.controls.password.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <div class="buttonDiv">
+                    <button mat-raised-button color="primary" [disabled]="loginForm.invalid" type="submit">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

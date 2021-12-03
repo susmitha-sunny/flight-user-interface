@@ -1,9 +1,15 @@
 <div class="searchWrapper">
   <div class="formWrapper">
     <form [formGroup]="searchForm" (submit)="submit()">
+
       <mat-form-field appearance="outline" class="customField">
         <mat-label>From</mat-label>
-        <input matInput formControlName="from" required placeholder="Enter departure location"/>
+        <!-- <input matInput formControlName="from" required placeholder="Enter departure location" />  -->
+        <mat-select formControlName="from" required placeholder="Enter departure airport">
+          <mat-option *ngFor="let item of departureAirportList" value={{item}}>
+            {{item}}
+          </mat-option>
+        </mat-select>
         <mat-error *ngIf="searchForm.controls.from.touched && searchForm.controls.from.invalid">
           <span *ngIf="searchForm.controls.from.errors?.required">This field is mandatory.</span>
           <span *ngIf="searchForm.controls.from.errors?.pattern">This field is invalid.</span>
@@ -12,7 +18,12 @@
 
       <mat-form-field appearance="outline" class="customField">
         <mat-label>To</mat-label>
-        <input matInput formControlName="to" required placeholder="Enter arrival location"/>
+        <!-- <input matInput formControlName="to" required placeholder="Enter arrival location" /> -->
+        <mat-select formControlName="to" required placeholder="Enter arrival airport">
+          <mat-option *ngFor="let item of arrivalAirportList" value={{item}}>
+            {{item}}
+          </mat-option>
+        </mat-select>
         <mat-error *ngIf="searchForm.controls.to.touched && searchForm.controls.to.invalid">
           <span *ngIf="searchForm.controls.to.errors?.required">This field is mandatory.</span>
           <span *ngIf="searchForm.controls.to.errors?.pattern">This field is invalid.</span>
@@ -20,41 +31,46 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="customField">
+        <mat-label>Trip Type</mat-label>
+        <mat-select formControlName="triptype" required placeholder="Enter trip type">
+          <mat-option value="OW">One Way</mat-option>
+          <mat-option value="RT">Round Trip</mat-option>
+        </mat-select>
+        <mat-error *ngIf="searchForm.controls.triptype.touched && searchForm.controls.triptype.invalid">
+          <span *ngIf="searchForm.controls.triptype.errors?.required">This field is mandatory.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field appearance="outline" class="customField">
         <mat-label>Date</mat-label>
-        <input matInput formControlName="date" required [matDatepicker]="picker" [min]="minDate" placeholder="Choose a date"/>
+        <input matInput formControlName="date" required [matDatepicker]="picker" [min]="today"
+          placeholder="Choose a date" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker ></mat-datepicker>
+        <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="searchForm.controls.date.touched && searchForm.controls.date.invalid">
           <span *ngIf="searchForm.controls.date.errors?.required">This field is mandatory.</span>
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="customField">
-        <mat-label>Trip Type</mat-label>
-        <mat-select formControlName="triptype" required>
-            <mat-option value="OW">One Way</mat-option>
-            <mat-option value="RT">Round Trip</mat-option>
-          </mat-select>
-        <mat-error *ngIf="searchForm.controls.triptype.touched && searchForm.controls.triptype.invalid">
-          <span *ngIf="searchForm.controls.triptype.errors?.required">This field is mandatory.</span>
-        </mat-error>
-      </mat-form-field>
-      
       <mat-form-field *ngIf="searchForm.controls.triptype.value=='RT'" appearance="outline" class="customField">
         <mat-label>Return Date</mat-label>
-        <input matInput formControlName="returndate" required [matDatepicker]="picker" [min]="searchForm.controls.date.value" placeholder="Choose a return date"/>
+        <input matInput formControlName="returndate" required [matDatepicker]="picker"
+          [min]="searchForm.controls.date.value" placeholder="Choose a return date" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker ></mat-datepicker>
+        <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="searchForm.controls.returndate.touched && searchForm.controls.returndate.invalid">
           <span *ngIf="searchForm.controls.date.errors?.required">This field is mandatory.</span>
         </mat-error>
       </mat-form-field>
-    
+
       <br>
 
       <mat-form-field appearance="outline" class="customField">
         <mat-label>Number of adult</mat-label>
-        <input type="number" value="1" min="1" max="9" matInput formControlName="adultcount" required placeholder="Enter adult count"/>
+        <input type="number" value="1" min="1" max="9" matInput formControlName="adultcount" required
+          placeholder="Enter adult count" />
         <mat-error *ngIf="searchForm.controls.adultcount.touched && searchForm.controls.adultcount.invalid">
           <span *ngIf="searchForm.controls.adultcount.errors?.required">This field is mandatory.</span>
         </mat-error>
@@ -62,18 +78,21 @@
 
       <mat-form-field appearance="outline" class="customField">
         <mat-label>Number of child</mat-label>
-        <input type="number" value="0" min="0" max="9" matInput formControlName="childcount" placeholder="Enter child count"/>
+        <input type="number" value="0" min="0" max="9" matInput formControlName="childcount"
+          placeholder="Enter child count" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="customField">
         <mat-label>Number of infant</mat-label>
-        <input type="number" value="0" min="0" max="9" matInput formControlName="infantcount" placeholder="Enter infant count"/>
+        <input type="number" value="0" min="0" max="9" matInput formControlName="infantcount"
+          placeholder="Enter infant count" />
       </mat-form-field>
 
       <br>
       <div class="buttonDiv">
-      <button mat-raised-button color="primary" [disabled]="searchForm.invalid" type="submit">Search</button>
-    </div>
+        <button mat-raised-button color="primary" [disabled]="searchForm.invalid" type="submit">Search</button>
+      </div>
+
     </form>
   </div>
 </div>
